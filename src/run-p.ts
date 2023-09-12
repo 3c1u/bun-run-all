@@ -45,7 +45,6 @@ export const runParallelTasks = async (
       if (abortController.signal.aborted) {
         return
       }
-
       const current = taskQueue.pop()
 
       if (!current) {
@@ -79,5 +78,5 @@ export const main = async () => {
 }
 
 if (import.meta.path === Bun.main) {
-  void main()
+  await main()
 }
