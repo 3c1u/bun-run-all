@@ -17,7 +17,6 @@
     "typescript": "^5.2.2"
   },
   "scripts": {
-    "bundle": "bun build ./src/index.ts --outdir ./dist",
     "dev:run-p": "bun run ./src/run-p.ts",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "pnpm lint --fix",
@@ -34,14 +33,6 @@
   },
   "directories": {
     "bin": "bin",
-    "dist": "dist"
-  },
-  "files": [
-    "dist/index.js",
-    "bin/npm-run-all",
-    "bin/run-p",
-    "bin/run-s",
-    "README.md",
-    "LICENSE"
-  ]
+    "src": "src"
+  }
 }
