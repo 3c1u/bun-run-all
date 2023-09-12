@@ -3,6 +3,7 @@
   "module": "src/index.ts",
   "type": "module",
   "dependencies": {
+    "commander": "^11.0.0",
     "minimatch": "^9.0.3",
     "shell-quote": "^1.8.1"
   },

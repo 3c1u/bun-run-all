@@ -1,3 +1,4 @@
+import { Command } from 'commander'
 import { runTask } from './run-task'
 import { getTasksFromGlobPatterns } from './task-glob'
 
@@ -11,6 +12,23 @@ interface RunParallelTasksOptions {
   // race?: boolean
   // silent?: boolean
 }
+
+const program = new Command()
+
+program
+  .usage('[options] <tasks...>')
+  .description('Runs tasks in parallel.')
+  .arguments('<tasks...>')
+  .option('-c, --continue-on-error', 'Continue on error')
+  .option('-j, --max-parallel <number>', 'Max concurrency', '4')
+  .option(
+    '--aggregate-output',
+    'Aggregates the output of all tasks by throttling',
+  )
+  .option('-l, --print-label', 'Prepends the task name to its output')
+  .option('-n, --print-name', 'Prints the task name before running it')
+  .option('-r, --race', 'Kills all tasks if one finishes successfully')
+  .option('-s, --silent', 'Suppresses all output')
 
 export const runParallelTasks = async (
   taskPatterns: string[],
@@ -71,10 +89,14 @@ export const runParallelTasks = async (
 }
 
 export const main = async () => {
-  // TODO: parse CLI arguments
+  const parsedArguments = program.parse(process.argv)
+  const options = program.opts()
+  const tasks = parsedArguments.args
 
-  const taskPatterns = process.argv.slice(2)
-  await runParallelTasks(taskPatterns)
+  await runParallelTasks(tasks, {
+    continueOnError: Boolean(options.continueOnError),
+    maxConcurrency: Number(options.maxParallel),
+  })
 }
 
 if (import.meta.path === Bun.main) {
