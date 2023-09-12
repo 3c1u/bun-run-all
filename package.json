@@ -1,5 +1,5 @@
 {
-  "name": "bun-run-all",
+  "name": "@3c1u/bun-run-all",
   "module": "src/index.ts",
   "type": "module",
   "dependencies": {
