@@ -4,7 +4,7 @@ import { parse } from 'shell-quote'
 import type { ParseEntry } from 'shell-quote'
 
 interface RunTaskOptions extends SpawnOptions.OptionsObject {
-  abortController?: AbortController
+  signal?: AbortSignal
 }
 
 const taskArgumentToString = (taskArgument: ParseEntry): string | undefined => {
@@ -40,11 +40,11 @@ export const runTask = async (task: string, options?: RunTaskOptions) => {
     ...options,
   })
 
-  const abortController = options?.abortController
+  const abortSignal = options?.signal
 
-  if (abortController) {
-    abortController.signal.addEventListener('abort', () => {
-      const reason = abortController.signal.reason as unknown
+  if (abortSignal) {
+    abortSignal.addEventListener('abort', () => {
+      const reason = abortSignal.reason as unknown
 
       if (typeof reason === 'number') {
         subprocess.kill(reason)

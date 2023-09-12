@@ -11,4 +11,19 @@ describe('runTask', () => {
     expect(result.exitCode).toBe(0)
     expect(stdout).toBe('hoge\n')
   })
+
+  test('process should abort when an abort signal is triggered', async () => {
+    const controller = new AbortController()
+    const resultPromise = runTask('for-test:sleep', {
+      signal: controller.signal,
+    })
+
+    setTimeout(() => {
+      controller.abort()
+    }, 100)
+
+    const result = await resultPromise
+
+    expect(result.killed).toBe(true)
+  })
 })

@@ -23,7 +23,9 @@
     "lint:fix": "pnpm lint --fix",
     "fmt": "prettier --write .",
     "prepack": "bun bundle",
-    "for-test:hoge": "echo hoge"
+    "for-test:hoge": "echo hoge",
+    "for-test:fuga": "echo fuga",
+    "for-test:sleep": "sleep 5"
   },
   "bin": {
     "run-p": "bin/run-p",

@@ -19,6 +19,8 @@ describe('getTasksFromGlobPatterns', () => {
   test('should parse wildcard pattern', async () => {
     expect(await getTasksFromGlobPatterns(['for-test:*'])).toEqual([
       'for-test:hoge',
+      'for-test:fuga',
+      'for-test:sleep',
     ])
   })
 })
