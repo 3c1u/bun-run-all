@@ -1,0 +1,39 @@
+{
+  "name": "bun-run-all",
+  "module": "src/index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "bun-types": "1.0.1",
+    "eslint": "^8.49.0",
+    "eslint-plugin-unicorn": "^48.0.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "bundle": "bun build ./src/index.ts --outdir ./dist",
+    "dev:run-p": "bun run ./src/index.ts",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:fix": "pnpm lint --fix",
+    "fmt": "prettier --write .",
+    "prepack": "bun bundle"
+  },
+  "bin": {
+    "run-p": "bin/run-p",
+    "run-s": "bin/run-s",
+    "run-all": "bin/npm-run-all"
+  },
+  "directories": {
+    "bin": "bin",
+    "dist": "dist"
+  },
+  "files": [
+    "dist/index.js",
+    "bin/npm-run-all",
+    "bin/run-p",
+    "bin/run-s",
+    "README.md",
+    "LICENSE"
+  ]
+}
