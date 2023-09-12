@@ -18,7 +18,7 @@
   },
   "scripts": {
     "bundle": "bun build ./src/index.ts --outdir ./dist",
-    "dev:run-p": "bun run ./src/index.ts",
+    "dev:run-p": "bun run ./src/run-p.ts",
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "pnpm lint --fix",
     "fmt": "prettier --write .",
