@@ -21,7 +21,8 @@
     "lint": "eslint --ext .ts,.tsx ./src",
     "lint:fix": "pnpm lint --fix",
     "fmt": "prettier --write .",
-    "prepack": "bun bundle"
+    "prepack": "bun bundle",
+    "for-test:hoge": "echo hoge"
   },
   "bin": {
     "run-p": "bin/run-p",
