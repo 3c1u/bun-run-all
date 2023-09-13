@@ -41,15 +41,18 @@ export const runParallelTasks = async (
 
   const tasks = await getTasksFromGlobPatterns(taskNames)
 
-  const taskQueue = tasks.map((task, index) => {
-    const taskArgument = taskArguments[index]
+  const taskQueue = tasks
+    .map((task, index) => {
+      const taskArgument = taskArguments[index]
 
-    if (taskArgument !== '') {
-      return `${task} ${taskArgument}`
-    }
+      if (taskArgument !== '') {
+        return `${task} ${taskArgument}`
+      }
 
-    return task
-  })
+      return task
+    })
+    .reverse()
+
   const abortController = new AbortController()
 
   process.on('SIGINT', () => {
